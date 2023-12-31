@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:flower_app/shared%20widgets/colors.dart';
 import 'package:flower_app/shared%20widgets/constants.dart';
 import 'package:flower_app/shared%20widgets/custom_textfield.dart';
 import 'package:flutter/material.dart';
@@ -46,14 +47,14 @@ class Login extends StatelessWidget {
               ElevatedButton(
                 onPressed: () {},
                 style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.orange),
+                  backgroundColor: MaterialStateProperty.all(BTNgreen),
                   padding: MaterialStateProperty.all(EdgeInsets.all(12)),
                   shape: MaterialStateProperty.all(RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8))),
                 ),
                 child: Text(
-                  "click here",
-                  style: TextStyle(fontSize: 19),
+                  "Sign In",
+                  style: TextStyle(fontSize: 19, color: Colors.white),
                 ),
               ),
             ],
