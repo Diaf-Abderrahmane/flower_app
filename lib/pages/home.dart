@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sort_child_properties_last
 
 import 'package:flower_app/shared%20widgets/colors.dart';
 import 'package:flutter/material.dart';
@@ -10,6 +10,57 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        body: GridView.builder(
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            // width & height chghl
+            childAspectRatio: 3 / 2,
+            crossAxisSpacing: 0,
+            mainAxisSpacing: 0,
+          ),
+          itemCount: 6,
+          itemBuilder: (BuildContext context, int index) {
+            return GestureDetector(
+              onTap: () {},
+              child: GridTile(
+                child: Stack(
+                  children: [
+                    Positioned(
+                      left: 10,
+                      right: 10,
+                      top: 10,
+                      bottom: 0,
+                      // cliprect to add curve
+                      child: ClipRRect(
+                          borderRadius: BorderRadius.circular(0),
+                          child: Image.asset("assets/img/neon.jpg")),
+                    ),
+                  ],
+                ),
+                footer: GridTileBar(
+                  trailing: Container(
+                    padding: EdgeInsets.all(0),
+                    decoration: BoxDecoration(
+                        color: valBlue,
+                        borderRadius: BorderRadius.circular(100)),
+                    child: IconButton(
+                      onPressed: () {},
+                      icon: Icon(Icons.add),
+                      color: valRed,
+                    ),
+                  ),
+                  leading: Container(
+                    decoration: BoxDecoration(
+                      color: valBlue,
+                    ),
+                    child: Text("\$12.99"),
+                  ),
+                  title: Text(""),
+                ),
+              ),
+            );
+          },
+        ),
         drawer: Drawer(
           child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
