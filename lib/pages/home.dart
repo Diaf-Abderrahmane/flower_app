@@ -10,16 +10,30 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        drawer: Drawer(
+          child: Column(children: [
+            UserAccountsDrawerHeader(
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage("assets/img/neon.jpg"),
+                      fit: BoxFit.cover)),
+              currentAccountPicture: CircleAvatar(
+                backgroundImage: AssetImage("assets/img/my_picture.jpg"),
+              ),
+              accountEmail: Text("ja_diaf@esi.dz"),
+              accountName: Text(
+                "Abderrahmane Diaf",
+                style: TextStyle(color: Colors.white),
+              ),
+            )
+          ]),
+        ),
         appBar: AppBar(
           title: Text(
             "HOME",
             style: TextStyle(color: Colors.white),
           ),
           backgroundColor: valRed,
-          leading: Icon(
-            Icons.menu,
-            color: Colors.white,
-          ),
           actions: [
             Stack(children: [
               Container(
