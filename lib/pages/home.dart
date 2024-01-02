@@ -11,22 +11,55 @@ class Home extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         drawer: Drawer(
-          child: Column(children: [
-            UserAccountsDrawerHeader(
-              decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage("assets/img/neon.jpg"),
-                      fit: BoxFit.cover)),
-              currentAccountPicture: CircleAvatar(
-                backgroundImage: AssetImage("assets/img/my_picture.jpg"),
-              ),
-              accountEmail: Text("ja_diaf@esi.dz"),
-              accountName: Text(
-                "Abderrahmane Diaf",
-                style: TextStyle(color: Colors.white),
-              ),
-            )
-          ]),
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  children: [
+                    UserAccountsDrawerHeader(
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                              image: AssetImage("assets/img/neon.jpg"),
+                              fit: BoxFit.cover)),
+                      currentAccountPicture: CircleAvatar(
+                        backgroundImage:
+                            AssetImage("assets/img/my_picture.jpg"),
+                      ),
+                      accountEmail: Text("ja_diaf@esi.dz"),
+                      accountName: Text(
+                        "Abderrahmane Diaf",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                    ListTile(
+                      title: Text("Home"),
+                      leading: Icon(Icons.home),
+                      onTap: () {},
+                    ),
+                    ListTile(
+                      title: Text("My products"),
+                      leading: Icon(Icons.add_shopping_cart),
+                      onTap: () {},
+                    ),
+                    ListTile(
+                      title: Text("About"),
+                      leading: Icon(Icons.help_center),
+                      onTap: () {},
+                    ),
+                    ListTile(
+                      title: Text("Logout"),
+                      leading: Icon(Icons.exit_to_app),
+                      onTap: () {},
+                    ),
+                  ],
+                ),
+                Container(
+                    margin: EdgeInsets.only(bottom: 5),
+                    child: Text(
+                      "Developed By Diaf Abderrahmane 2024",
+                      style: TextStyle(fontSize: 14),
+                    ))
+              ]),
         ),
         appBar: AppBar(
           title: Text(
