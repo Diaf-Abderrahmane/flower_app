@@ -1,10 +1,12 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
+import 'package:flower_app/model/item.dart';
 import 'package:flower_app/shared%20widgets/colors.dart';
 import 'package:flutter/material.dart';
 
 class Details extends StatefulWidget {
-  Details({super.key});
+  Item item;
+  Details({required this.item, super.key});
 
   @override
   State<Details> createState() => _DetailsState();
@@ -19,7 +21,7 @@ class _DetailsState extends State<Details> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Image.asset("assets/img/1.webp"),
+            Image.asset("assets/img/${widget.item.imgUrl}"),
             SizedBox(
               height: 11,
             ),

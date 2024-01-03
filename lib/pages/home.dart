@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sort_child_properties_last
 
 import 'package:flower_app/model/item.dart';
+import 'package:flower_app/pages/details_screen.dart';
 import 'package:flower_app/shared%20widgets/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -20,7 +21,14 @@ class Home extends StatelessWidget {
           itemCount: items.length,
           itemBuilder: (BuildContext context, int index) {
             return GestureDetector(
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => Details(
+                              item: items[index],
+                            )));
+              },
               child: GridTile(
                 child: Stack(
                   children: [
