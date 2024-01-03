@@ -33,7 +33,7 @@ class Home extends StatelessWidget {
                       // cliprect to add curve
                       child: ClipRRect(
                           borderRadius: BorderRadius.circular(0),
-                          child: Image.asset("assets/img/neon.jpg")),
+                          child: Image.asset("assets/img/1.webp")),
                     ),
                   ],
                 ),
@@ -42,17 +42,17 @@ class Home extends StatelessWidget {
                     padding: EdgeInsets.all(0),
                     decoration: BoxDecoration(
                         color: valBlue,
-                        borderRadius: BorderRadius.circular(100)),
+                        borderRadius: BorderRadius.circular(50)),
                     child: IconButton(
                       onPressed: () {},
                       icon: Icon(Icons.add),
-                      color: valRed,
+                      color: Colors.black,
                     ),
                   ),
                   leading: Container(
                     decoration: BoxDecoration(
-                      color: valBlue,
-                    ),
+                        color: valBlue,
+                        borderRadius: BorderRadius.circular(50)),
                     child: Text("\$12.99"),
                   ),
                   title: Text(""),
