@@ -1,11 +1,10 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sort_child_properties_last
 
+import 'package:flower_app/model/item.dart';
 import 'package:flower_app/shared%20widgets/colors.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatelessWidget {
-  const Home({super.key});
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -18,7 +17,7 @@ class Home extends StatelessWidget {
             crossAxisSpacing: 0,
             mainAxisSpacing: 0,
           ),
-          itemCount: 6,
+          itemCount: items.length,
           itemBuilder: (BuildContext context, int index) {
             return GestureDetector(
               onTap: () {},
@@ -33,7 +32,8 @@ class Home extends StatelessWidget {
                       // cliprect to add curve
                       child: ClipRRect(
                           borderRadius: BorderRadius.circular(0),
-                          child: Image.asset("assets/img/1.webp")),
+                          child:
+                              Image.asset("assets/img/${items[index].imgUrl}")),
                     ),
                   ],
                 ),
@@ -53,7 +53,7 @@ class Home extends StatelessWidget {
                     decoration: BoxDecoration(
                         color: valBlue,
                         borderRadius: BorderRadius.circular(50)),
-                    child: Text("\$12.99"),
+                    child: Text("\$${items[index].price}"),
                   ),
                   title: Text(""),
                 ),
