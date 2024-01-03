@@ -51,9 +51,12 @@ class Home extends StatelessWidget {
                   ),
                   leading: Container(
                     decoration: BoxDecoration(
-                        color: valBlue,
+                        color: Color.fromARGB(255, 255, 219, 113),
                         borderRadius: BorderRadius.circular(50)),
-                    child: Text("\$${items[index].price}"),
+                    child: Text(
+                      "\$${items[index].price}",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
                   ),
                   title: Text(""),
                 ),

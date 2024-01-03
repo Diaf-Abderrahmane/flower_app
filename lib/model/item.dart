@@ -1,3 +1,5 @@
+// model
+
 class Item {
   String imgUrl;
   double price;
@@ -11,4 +13,7 @@ List items = [
   Item(imgUrl: "3.webp", price: 9.01),
   Item(imgUrl: "4.webp", price: 5.99),
   Item(imgUrl: "5.webp", price: 4.99),
+  Item(imgUrl: "6.webp", price: 4.99),
+  Item(imgUrl: "7.webp", price: 4.99),
+  Item(imgUrl: "8.webp", price: 4.99),
 ];

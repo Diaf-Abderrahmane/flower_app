@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:flower_app/pages/details_screen.dart';
 import 'package:flower_app/pages/home.dart';
 import 'package:flower_app/pages/login.dart';
 import 'package:flower_app/pages/register.dart';
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Home(),
+      home: Details(),
     );
   }
 }
