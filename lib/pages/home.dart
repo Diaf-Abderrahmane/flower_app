@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sort_child_properties_last
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sort_child_properties_last, dead_code
 
 import 'package:flower_app/cart.dart';
 import 'package:flower_app/model/item.dart';
@@ -53,19 +53,15 @@ class Home extends StatelessWidget {
                     decoration: BoxDecoration(
                         color: valBlue,
                         borderRadius: BorderRadius.circular(50)),
-                    child: IconButton(
-                      onPressed: () {
-                        Cart cart = new Cart();
-                        cart.flowersInCart.add(items[index]);
-                        // Consumer<Cart>(
-                        //   builder: ((context, instance, child){
-                        //     return
-                        //   }),
-                        // );
-                      },
-                      icon: Icon(Icons.add),
-                      color: Colors.black,
-                    ),
+                    child: Consumer<Cart>(builder: (context, instance, child) {
+                      return IconButton(
+                        onPressed: () {
+                          instance.add(items[index]);
+                        },
+                        icon: Icon(Icons.add),
+                        color: Colors.black,
+                      );
+                    }),
                   ),
                   leading: Container(
                     decoration: BoxDecoration(
@@ -140,31 +136,33 @@ class Home extends StatelessWidget {
           ),
           backgroundColor: valRed,
           actions: [
-            Stack(children: [
-              Container(
-                child: Consumer<Cart>(builder: (context, instance, child) {
-                  return Text("${instance.flowersInCart.length}");
-                }),
-                // Text(,
-                //     style: TextStyle(color: Colors.white, fontSize: 16)
-                //     ),
-                padding: EdgeInsets.all(5),
-                decoration:
-                    BoxDecoration(color: valBlue, shape: BoxShape.circle),
-              ),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(5, 5, 0, 0),
-                child: IconButton(
-                    onPressed: () {}, icon: Icon(Icons.add_shopping_cart)),
-              )
-            ]),
-            Padding(
-              padding: const EdgeInsets.only(right: 18),
-              child: Text(
-                "\$13",
-                style: TextStyle(fontSize: 16),
-              ),
-            ),
+            Consumer<Cart>(builder: (context, instance, child) {
+              return Row(children: [
+                Stack(children: [
+                  Container(
+                    child: Text("${instance.flowersInCart.length}"),
+                    // Text(,
+                    //     style: TextStyle(color: Colors.white, fontSize: 16)
+                    //     ),
+                    padding: EdgeInsets.all(5),
+                    decoration:
+                        BoxDecoration(color: valBlue, shape: BoxShape.circle),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(5, 5, 0, 0),
+                    child: IconButton(
+                        onPressed: () {}, icon: Icon(Icons.add_shopping_cart)),
+                  )
+                ]),
+                Padding(
+                  padding: const EdgeInsets.only(right: 18),
+                  child: Text(
+                    "\$${instance.totalPrice}",
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ),
+              ]);
+            })
           ],
         ),
       ),
