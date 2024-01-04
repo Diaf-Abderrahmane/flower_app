@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flower_app/cart.dart';
+import 'package:flower_app/pages/checkout.dart';
 import 'package:flower_app/pages/details_screen.dart';
 import 'package:flower_app/pages/home.dart';
 import 'package:flower_app/pages/login.dart';

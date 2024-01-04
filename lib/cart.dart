@@ -10,4 +10,10 @@ class Cart with ChangeNotifier {
     totalPrice += product.price.round();
     notifyListeners();
   }
+
+  remove(Item product) {
+    flowersInCart.remove(product);
+    totalPrice -= product.price.round();
+    notifyListeners();
+  }
 }

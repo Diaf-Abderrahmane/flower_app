@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'package:flower_app/model/item.dart';
+import 'package:flower_app/shared%20widgets/appbar.dart';
 import 'package:flower_app/shared%20widgets/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -123,26 +124,7 @@ class _DetailsState extends State<Details> {
         ),
         backgroundColor: valRed,
         actions: [
-          Stack(children: [
-            Container(
-              child: Text("8",
-                  style: TextStyle(color: Colors.white, fontSize: 16)),
-              padding: EdgeInsets.all(5),
-              decoration: BoxDecoration(color: valBlue, shape: BoxShape.circle),
-            ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(5, 5, 0, 0),
-              child: IconButton(
-                  onPressed: () {}, icon: Icon(Icons.add_shopping_cart)),
-            )
-          ]),
-          Padding(
-            padding: const EdgeInsets.only(right: 18),
-            child: Text(
-              "\$13",
-              style: TextStyle(fontSize: 16),
-            ),
-          ),
+          ProductsAndPrice(),
         ],
       ),
     );
