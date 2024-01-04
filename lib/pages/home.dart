@@ -10,6 +10,8 @@ import 'package:provider/provider.dart';
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final cart = Provider.of<Cart>(context);
+
     return SafeArea(
       child: Scaffold(
         body: GridView.builder(
@@ -49,20 +51,17 @@ class Home extends StatelessWidget {
                 ),
                 footer: GridTileBar(
                   trailing: Container(
-                    padding: EdgeInsets.all(0),
-                    decoration: BoxDecoration(
-                        color: valBlue,
-                        borderRadius: BorderRadius.circular(50)),
-                    child: Consumer<Cart>(builder: (context, instance, child) {
-                      return IconButton(
+                      padding: EdgeInsets.all(0),
+                      decoration: BoxDecoration(
+                          color: valBlue,
+                          borderRadius: BorderRadius.circular(50)),
+                      child: IconButton(
                         onPressed: () {
-                          instance.add(items[index]);
+                          cart.add(items[index]);
                         },
                         icon: Icon(Icons.add),
                         color: Colors.black,
-                      );
-                    }),
-                  ),
+                      )),
                   leading: Container(
                     decoration: BoxDecoration(
                         color: Color.fromARGB(255, 255, 219, 113),
@@ -136,33 +135,31 @@ class Home extends StatelessWidget {
           ),
           backgroundColor: valRed,
           actions: [
-            Consumer<Cart>(builder: (context, instance, child) {
-              return Row(children: [
-                Stack(children: [
-                  Container(
-                    child: Text("${instance.flowersInCart.length}"),
-                    // Text(,
-                    //     style: TextStyle(color: Colors.white, fontSize: 16)
-                    //     ),
-                    padding: EdgeInsets.all(5),
-                    decoration:
-                        BoxDecoration(color: valBlue, shape: BoxShape.circle),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(5, 5, 0, 0),
-                    child: IconButton(
-                        onPressed: () {}, icon: Icon(Icons.add_shopping_cart)),
-                  )
-                ]),
-                Padding(
-                  padding: const EdgeInsets.only(right: 18),
-                  child: Text(
-                    "\$${instance.totalPrice}",
-                    style: TextStyle(fontSize: 16),
-                  ),
+            Row(children: [
+              Stack(children: [
+                Container(
+                  child: Text("${cart.flowersInCart.length}"),
+                  // Text(,
+                  //     style: TextStyle(color: Colors.white, fontSize: 16)
+                  //     ),
+                  padding: EdgeInsets.all(5),
+                  decoration:
+                      BoxDecoration(color: valBlue, shape: BoxShape.circle),
                 ),
-              ]);
-            })
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(5, 5, 0, 0),
+                  child: IconButton(
+                      onPressed: () {}, icon: Icon(Icons.add_shopping_cart)),
+                )
+              ]),
+              Padding(
+                padding: const EdgeInsets.only(right: 18),
+                child: Text(
+                  "\$${cart.totalPrice}",
+                  style: TextStyle(fontSize: 16),
+                ),
+              ),
+            ]),
           ],
         ),
       ),
