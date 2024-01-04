@@ -1,9 +1,11 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sort_child_properties_last
 
+import 'package:flower_app/cart.dart';
 import 'package:flower_app/model/item.dart';
 import 'package:flower_app/pages/details_screen.dart';
 import 'package:flower_app/shared%20widgets/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class Home extends StatelessWidget {
   @override
@@ -52,7 +54,15 @@ class Home extends StatelessWidget {
                         color: valBlue,
                         borderRadius: BorderRadius.circular(50)),
                     child: IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Cart cart = new Cart();
+                        cart.flowersInCart.add(items[index]);
+                        // Consumer<Cart>(
+                        //   builder: ((context, instance, child){
+                        //     return
+                        //   }),
+                        // );
+                      },
                       icon: Icon(Icons.add),
                       color: Colors.black,
                     ),
@@ -132,8 +142,12 @@ class Home extends StatelessWidget {
           actions: [
             Stack(children: [
               Container(
-                child: Text("8",
-                    style: TextStyle(color: Colors.white, fontSize: 16)),
+                child: Consumer<Cart>(builder: (context, instance, child) {
+                  return Text("${instance.flowersInCart.length}");
+                }),
+                // Text(,
+                //     style: TextStyle(color: Colors.white, fontSize: 16)
+                //     ),
                 padding: EdgeInsets.all(5),
                 decoration:
                     BoxDecoration(color: valBlue, shape: BoxShape.circle),
