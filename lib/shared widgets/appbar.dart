@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, sort_child_properties_last
 
 import 'package:flower_app/cart.dart';
 import 'package:flower_app/pages/checkout.dart';
@@ -16,7 +16,7 @@ class ProductsAndPrice extends StatelessWidget {
     return Row(children: [
       Stack(children: [
         Container(
-          child: Text("${cart.flowersInCart.length}"),
+          child: Text("${cart.itemCount}"),
           // Text(,
           //     style: TextStyle(color: Colors.white, fontSize: 16)
           //     ),

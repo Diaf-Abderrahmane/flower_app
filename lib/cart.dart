@@ -16,4 +16,8 @@ class Cart with ChangeNotifier {
     totalPrice -= product.price.round();
     notifyListeners();
   }
+
+  get itemCount {
+    return flowersInCart.length;
+  }
 }

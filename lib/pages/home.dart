@@ -2,6 +2,7 @@
 
 import 'package:flower_app/cart.dart';
 import 'package:flower_app/model/item.dart';
+import 'package:flower_app/pages/checkout.dart';
 import 'package:flower_app/pages/details_screen.dart';
 import 'package:flower_app/shared%20widgets/appbar.dart';
 import 'package:flower_app/shared%20widgets/colors.dart';
@@ -102,12 +103,20 @@ class Home extends StatelessWidget {
                     ListTile(
                       title: Text("Home"),
                       leading: Icon(Icons.home),
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => Home()));
+                      },
                     ),
                     ListTile(
                       title: Text("My products"),
                       leading: Icon(Icons.add_shopping_cart),
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => CheckOut()));
+                      },
                     ),
                     ListTile(
                       title: Text("About"),
