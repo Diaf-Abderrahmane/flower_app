@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flower_app/cart.dart';
+import 'package:flower_app/firebase_options.dart';
 import 'package:flower_app/pages/checkout.dart';
 import 'package:flower_app/pages/details_screen.dart';
 import 'package:flower_app/pages/home.dart';
@@ -11,7 +12,11 @@ import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
