@@ -1,13 +1,57 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flower_app/pages/login.dart';
 import 'package:flower_app/shared%20widgets/colors.dart';
 import 'package:flower_app/shared%20widgets/constants.dart';
 import 'package:flower_app/shared%20widgets/custom_textfield.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class Register extends StatelessWidget {
-  const Register({super.key});
+class Register extends StatefulWidget {
+  Register({super.key});
+
+  @override
+  State<Register> createState() => _RegisterState();
+}
+
+class _RegisterState extends State<Register> {
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+  bool isLoading = false;
+
+  register() async {
+    setState(() {
+      isLoading = true;
+    });
+    try {
+      final credential =
+          await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: emailController.text,
+        password: passwordController.text,
+      );
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+        print('The password provided is too weak.');
+      } else if (e.code == 'email-already-in-use') {
+        print('The account already exists for that email.');
+      }
+    } catch (e) {
+      print(e);
+    }
+    setState(() {
+      isLoading = false;
+    });
+  }
+
+  // deletes the controller when moving to a different screen
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,6 +82,7 @@ class Register extends StatelessWidget {
                     height: 33,
                   ),
                   TextField(
+                    controller: emailController,
                     keyboardType: TextInputType.emailAddress,
                     // for password obscure
                     obscureText: false,
@@ -48,6 +93,7 @@ class Register extends StatelessWidget {
                     height: 33,
                   ),
                   TextField(
+                    controller: passwordController,
                     keyboardType: TextInputType.text,
                     // for password obscure
                     obscureText: true,
@@ -58,17 +104,23 @@ class Register extends StatelessWidget {
                     height: 33,
                   ),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      register();
+                    },
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all(valBlue),
                       padding: MaterialStateProperty.all(EdgeInsets.all(12)),
                       shape: MaterialStateProperty.all(RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8))),
                     ),
-                    child: Text(
-                      "Register",
-                      style: TextStyle(fontSize: 19, color: Colors.white),
-                    ),
+                    child: isLoading
+                        ? CircularProgressIndicator(
+                            color: Colors.white,
+                          )
+                        : Text(
+                            "Register",
+                            style: TextStyle(fontSize: 19, color: Colors.white),
+                          ),
                   ),
 
                   Row(

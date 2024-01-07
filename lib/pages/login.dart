@@ -78,7 +78,7 @@ class Login extends StatelessWidget {
                           Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => const Register()));
+                                  builder: (context) => Register()));
                         },
                         child: Text(
                           "Sign up",
