@@ -22,6 +22,7 @@ class _RegisterState extends State<Register> {
   final passwordController = TextEditingController();
   bool isLoading = false;
   final _formkey = GlobalKey<FormState>();
+  bool obscurePassword = true;
 
   register() async {
     setState(() {
@@ -81,7 +82,8 @@ class _RegisterState extends State<Register> {
                       // for password obscure
                       obscureText: false,
                       decoration: decorationTextField.copyWith(
-                          hintText: "Enter Your Username"),
+                          hintText: "Enter Your Username",
+                          suffixIcon: Icon(Icons.person)),
                     ),
                     SizedBox(
                       height: 33,
@@ -100,7 +102,8 @@ class _RegisterState extends State<Register> {
                       // for password obscure
                       obscureText: false,
                       decoration: decorationTextField.copyWith(
-                          hintText: "Enter Your Email"),
+                          hintText: "Enter Your Email",
+                          suffixIcon: Icon(Icons.email)),
                     ),
                     SizedBox(
                       height: 33,
@@ -116,9 +119,18 @@ class _RegisterState extends State<Register> {
                       controller: passwordController,
                       keyboardType: TextInputType.text,
                       // for password obscure
-                      obscureText: true,
+                      obscureText: obscurePassword,
                       decoration: decorationTextField.copyWith(
-                          hintText: "Enter Your Password"),
+                          hintText: "Enter Your Password",
+                          suffixIcon: IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  obscurePassword = !obscurePassword;
+                                });
+                              },
+                              icon: obscurePassword
+                                  ? Icon(Icons.visibility)
+                                  : Icon(Icons.visibility_off))),
                     ),
                     SizedBox(
                       height: 33,
