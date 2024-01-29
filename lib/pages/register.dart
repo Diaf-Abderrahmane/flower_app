@@ -4,14 +4,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flower_app/pages/login.dart';
 import 'package:flower_app/shared%20widgets/colors.dart';
 import 'package:flower_app/shared%20widgets/constants.dart';
-import 'package:flower_app/shared%20widgets/custom_textfield.dart';
 import 'package:flower_app/shared%20widgets/snackbar.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:email_validator/email_validator.dart';
 
 class Register extends StatefulWidget {
-  Register({super.key});
+  const Register({super.key});
 
   @override
   State<Register> createState() => _RegisterState();
@@ -92,9 +89,10 @@ class _RegisterState extends State<Register> {
                       controller: emailController,
                       // Text Validation using EmailValidator package
                       validator: (value) {
-                        return value != null && !EmailValidator.validate(value)
-                            ? "Enter a valid email"
-                            : null;
+                        return value!.contains(RegExp(
+                                r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+"))
+                            ? null
+                            : "Enter a valid email";
                       },
                       // autovalidate ( tjrs khaddam )
                       autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -165,7 +163,7 @@ class _RegisterState extends State<Register> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          "Do not have an account ?",
+                          "Already have an account ?",
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 16,

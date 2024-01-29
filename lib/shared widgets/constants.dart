@@ -10,5 +10,5 @@ const decorationTextField = InputDecoration(
   )),
   // fill with grey default color
   filled: true,
-  contentPadding: const EdgeInsets.all(8),
+  contentPadding: EdgeInsets.all(8),
 );

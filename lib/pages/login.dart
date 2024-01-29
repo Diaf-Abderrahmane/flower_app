@@ -3,7 +3,6 @@
 import 'package:flower_app/pages/register.dart';
 import 'package:flower_app/shared%20widgets/colors.dart';
 import 'package:flower_app/shared%20widgets/constants.dart';
-import 'package:flower_app/shared%20widgets/custom_textfield.dart';
 import 'package:flutter/material.dart';
 
 class Login extends StatelessWidget {

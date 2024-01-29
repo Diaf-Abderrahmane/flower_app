@@ -9,7 +9,7 @@ class MyTextField extends StatelessWidget {
 
   final String hintText;
 
-  MyTextField(
+  const MyTextField(
       {super.key,
       required this.textInputType,
       required this.isPassword,

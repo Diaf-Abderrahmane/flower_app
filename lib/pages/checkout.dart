@@ -50,10 +50,6 @@ class CheckOut extends StatelessWidget {
           SizedBox(height: 20),
           ElevatedButton(
             onPressed: () {},
-            child: Text(
-              "Pay \$${cart.totalPrice}",
-              style: TextStyle(fontSize: 19, color: Colors.white),
-            ),
             style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(valRed),
                 padding: MaterialStateProperty.all(
@@ -61,6 +57,10 @@ class CheckOut extends StatelessWidget {
                 ),
                 shape: MaterialStateProperty.all(RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(8)))),
+            child: Text(
+              "Pay \$${cart.totalPrice}",
+              style: TextStyle(fontSize: 19, color: Colors.white),
+            ),
           ),
         ],
       ),
