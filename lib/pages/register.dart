@@ -21,6 +21,18 @@ class _RegisterState extends State<Register> {
   final _formkey = GlobalKey<FormState>();
   bool obscurePassword = true;
 
+  bool isPassword8Char = false;
+  onPasswordChanged(String password) {
+    setState(() {
+      // isPassword8Char = false;
+      if (password.contains(RegExp(r'.{8,}'))) {
+        isPassword8Char = true;
+      } else {
+        isPassword8Char = false;
+      }
+    });
+  }
+
   register() async {
     setState(() {
       isLoading = true;
@@ -107,6 +119,9 @@ class _RegisterState extends State<Register> {
                       height: 33,
                     ),
                     TextFormField(
+                      onChanged: (password) {
+                        onPasswordChanged(password);
+                      },
                       validator: (value) {
                         return value!.length < 8
                             ? "Enter at least 8 characters"
@@ -130,6 +145,136 @@ class _RegisterState extends State<Register> {
                                   ? Icon(Icons.visibility)
                                   : Icon(Icons.visibility_off))),
                     ),
+
+                    Row(
+                      children: [
+                        Container(
+                          child: Icon(
+                            Icons.check,
+                            color: Colors.white,
+                            size: 15,
+                          ),
+                          height: 20,
+                          width: 20,
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color:
+                                  isPassword8Char ? Colors.green : Colors.white,
+                              border: Border.all(
+                                  color: const Color.fromARGB(
+                                      255, 179, 177, 177))),
+                        ),
+                        SizedBox(
+                          height: 12,
+                        ),
+                        Text("At least 8 characters")
+                      ],
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    Row(
+                      children: [
+                        Container(
+                          child: Icon(
+                            Icons.check,
+                            color: Colors.white,
+                            size: 15,
+                          ),
+                          height: 20,
+                          width: 20,
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Colors.white,
+                              border: Border.all(
+                                  color: const Color.fromARGB(
+                                      255, 179, 177, 177))),
+                        ),
+                        SizedBox(
+                          height: 12,
+                        ),
+                        Text("At least 1 number")
+                      ],
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    Row(
+                      children: [
+                        Container(
+                          child: Icon(
+                            Icons.check,
+                            color: Colors.white,
+                            size: 15,
+                          ),
+                          height: 20,
+                          width: 20,
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Colors.white,
+                              border: Border.all(
+                                  color: const Color.fromARGB(
+                                      255, 179, 177, 177))),
+                        ),
+                        SizedBox(
+                          height: 12,
+                        ),
+                        Text("Has Uppercase")
+                      ],
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    Row(
+                      children: [
+                        Container(
+                          child: Icon(
+                            Icons.check,
+                            color: Colors.white,
+                            size: 15,
+                          ),
+                          height: 20,
+                          width: 20,
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Colors.white,
+                              border: Border.all(
+                                  color: const Color.fromARGB(
+                                      255, 179, 177, 177))),
+                        ),
+                        SizedBox(
+                          height: 12,
+                        ),
+                        Text("Has Lowercase")
+                      ],
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    Row(
+                      children: [
+                        Container(
+                          child: Icon(
+                            Icons.check,
+                            color: Colors.white,
+                            size: 15,
+                          ),
+                          height: 20,
+                          width: 20,
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Colors.white,
+                              border: Border.all(
+                                  color: const Color.fromARGB(
+                                      255, 179, 177, 177))),
+                        ),
+                        SizedBox(
+                          height: 12,
+                        ),
+                        Text("Has special characters")
+                      ],
+                    ),
+
                     SizedBox(
                       height: 33,
                     ),
