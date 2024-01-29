@@ -22,14 +22,24 @@ class _RegisterState extends State<Register> {
   bool obscurePassword = true;
 
   bool isPassword8Char = false;
+  bool atLeast1Number = false;
+  bool hasUpperCase = false;
   onPasswordChanged(String password) {
     setState(() {
-      // isPassword8Char = false;
+      isPassword8Char = false;
+      atLeast1Number = false;
+      hasUpperCase = false;
       if (password.contains(RegExp(r'.{8,}'))) {
         isPassword8Char = true;
-      } else {
-        isPassword8Char = false;
       }
+      ;
+      if (password.contains(RegExp(r'.*[0-9].*'))) {
+        atLeast1Number = true;
+      }
+      ;
+      // if (password.contains(RegExp(r'?=.*?[A-Z]'))) {
+      //   hasUpperCase = true;
+      // }
     });
   }
 
@@ -185,7 +195,8 @@ class _RegisterState extends State<Register> {
                           width: 20,
                           decoration: BoxDecoration(
                               shape: BoxShape.circle,
-                              color: Colors.white,
+                              color:
+                                  atLeast1Number ? Colors.green : Colors.white,
                               border: Border.all(
                                   color: const Color.fromARGB(
                                       255, 179, 177, 177))),
@@ -211,7 +222,7 @@ class _RegisterState extends State<Register> {
                           width: 20,
                           decoration: BoxDecoration(
                               shape: BoxShape.circle,
-                              color: Colors.white,
+                              color: hasUpperCase ? Colors.green : Colors.white,
                               border: Border.all(
                                   color: const Color.fromARGB(
                                       255, 179, 177, 177))),
